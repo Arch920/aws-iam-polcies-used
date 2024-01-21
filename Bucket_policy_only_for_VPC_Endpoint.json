@@ -1,0 +1,20 @@
+{
+  "Version": "2012-10-17",
+  "Id": "Policy1415115909152",
+  "Statement": [
+    {
+      "Sid": "Access-S3-from-specific-VPCE-only",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Effect": "Deny",
+      "Resource": ["bucket_arn",
+                   "bucket_arn/*"],
+      "Condition": {
+        "StringNotEquals": {
+          "aws:sourceVpce": "vpc-endpoint-arn"
+        }
+      }
+    }
+  ]
+}
+  
